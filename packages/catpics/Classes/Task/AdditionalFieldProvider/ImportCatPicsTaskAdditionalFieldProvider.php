@@ -25,7 +25,7 @@ class ImportCatPicsTaskAdditionalFieldProvider extends AbstractAdditionalFieldPr
         $additionalFields = [];
 
         $additionalFields = array_merge($additionalFields, $this->generateAdditionalFields("api_url", 'URL to the API', $taskInfo, is_null($task) ? "" : $task->getApiUrl()));
-        $additionalFields = array_merge($additionalFields, $this->generateAdditionalFields("api_key", 'API Key', $taskInfo, is_null($task) ? "" : $task->getApiUrl()));
+        $additionalFields = array_merge($additionalFields, $this->generateAdditionalFields("api_key", 'API Key', $taskInfo, is_null($task) ? "" : $task->getApiKey()));
         $additionalFields = array_merge($additionalFields, $this->generateAdditionalFields("image_count", 'Number of images to import', $taskInfo, is_null($task) ? "" : $task->getImageCount()));
 		    $additionalFields = array_merge($additionalFields, $this->generateAdditionalFields("breed", 'Breeds (comma separated)', $taskInfo, is_null($task) ? "" : $task->getBreed()));
 

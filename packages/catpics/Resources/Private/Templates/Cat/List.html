@@ -2,40 +2,23 @@
 <f:layout name="Default" />
 
 <f:section name="content">
-    <h1 class="text-xl bold">Take a look at these cute cats:</h1>
-
-    <div class="grid grid-cols-12 gap-5">
-      <f:for each="{cats}" as="cat">
-        <div class="col-span-3">
-          {cat.imageUrl}
-        </div>
-
-      </f:for>
-    </div>
-
-    <f:flashMessages />
-
-    <table class="tx_catpics">
-        <tr>
-            <th><f:translate key="tx_catpics_domain_model_cat.cat_id" /></th>
-            <th><f:translate key="tx_catpics_domain_model_cat.image_url" /></th>
-            <th><f:translate key="tx_catpics_domain_model_cat.image_width" /></th>
-            <th><f:translate key="tx_catpics_domain_model_cat.image_height" /></th>
-            <th></th>
-            <th></th>
-        </tr>
+  <f:if condition="{cats}">
+    <f:then>
+      <h1 class="text-xl bold py-12">Take a look at these cute cats 😍</h1>
+      <div class="md:grid md:grid-cols-12 md:gap-5">
         <f:for each="{cats}" as="cat">
-            <tr>
-                <td><f:link.action action="show" arguments="{cat : cat}">{cat.catId}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{cat : cat}">{cat.imageUrl}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{cat : cat}">{cat.imageWidth}</f:link.action></td>
-                <td><f:link.action action="show" arguments="{cat : cat}">{cat.imageHeight}</f:link.action></td>
-                <td><f:link.action action="edit" arguments="{cat : cat}">Edit</f:link.action></td>
-                <td><f:link.action action="delete" arguments="{cat : cat}">Delete</f:link.action></td>
-            </tr>
-        </f:for>
-    </table>
-
-    <f:link.action action="new">New Cat</f:link.action>
+            <div class="md:col-span-4 lg:col-span-3">
+              <img src="{cat.imageUrl}"
+                  class="object-cover h-full"
+                  width="{cat.imageWidth}" height="{cat.imageHeight}"
+                  loading="lazy" alt="{cat.catId}"/>
+            </div>
+          </f:for>
+        </div>
+    </f:then>
+    <f:else>
+      <h1 class="text-xl bold py-12">There are no cats yet 😥</h1>
+    </f:else>
+  </f:if>
 </f:section>
 </html>

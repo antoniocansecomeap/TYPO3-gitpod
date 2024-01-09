@@ -94,7 +94,7 @@
     public function execute(): bool
     {
         $catController = GeneralUtility::makeInstance(CatController::class);
-        return $catController->importAction();
+        return $catController->importAction($this->apiUrl, $this->apiKey, $this->imageCount, $this->breed);
     }
  }
 ?>

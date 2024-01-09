@@ -24,9 +24,6 @@ use Catpics\Catpics\Domain\Model\Cat;
  */
 class CatController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
-
-    private const API_URL = 'https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=beng&api_key=live_wE5APo6N8z585pMP9eogwX6HVxXwGCO5jvi9FRT33j6rh8pR2dE2n2NqCv42PEqE';
-
     /**
      * catRepository
      *
@@ -59,14 +56,12 @@ class CatController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      *
      * @return bool
      */
-    public function importAction(): bool
+    public function importAction($apiUrl, $apiKey, $imageCount, $breed): bool
     {
         //we need to do this because the dependency injections doesnt seem to work...
         $persistenceManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(PersistenceManager::class);
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
         $catRepository = $objectManager->get(\Catpics\Catpics\Domain\Repository\CatRepository::class);
-
-
         $requestFactory = GeneralUtility::makeInstance(RequestFactory::class);
 
         $additionalOptions = [
@@ -74,9 +69,8 @@ class CatController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             'allow_redirects' => false,
         ];
 
-        // Get a PSR-7-compliant response object
         $response = $requestFactory->request(
-            self::API_URL,
+            $apiUrl . '?limit=' . $imageCount .  '&breed_ids=' . $breed . '&api_key=' . $apiKey,
             'GET',
             $additionalOptions
         );
@@ -102,7 +96,7 @@ class CatController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         }
         $persistenceManager->persistAll();
 
-      return true;
       //@todo: exception handling
+      return true;
     }
 }
