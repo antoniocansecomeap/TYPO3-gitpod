@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:catpics/Resources/Private/Language/locallang.xlf" date="2024-01-09T11:32:32Z" product-name="catpics">
+		<header/>
+		<body>
+			<trans-unit id="tx_catpics_domain_model_cat" resname="tx_catpics_domain_model_cat">
+				<source>Cat</source>
+			</trans-unit>
+			<trans-unit id="tx_catpics_domain_model_cat.description" resname="tx_catpics_domain_model_cat.description">
+				<source>Cat</source>
+			</trans-unit>
+			<trans-unit id="tx_catpics_domain_model_cat.cat_id" resname="tx_catpics_domain_model_cat.cat_id">
+				<source>Cat Id</source>
+			</trans-unit>
+			<trans-unit id="tx_catpics_domain_model_cat.cat_id.description" resname="tx_catpics_domain_model_cat.cat_id.description">
+				<source>Internal I D Of Cat</source>
+			</trans-unit>
+			<trans-unit id="tx_catpics_domain_model_cat.image_url" resname="tx_catpics_domain_model_cat.image_url">
+				<source>Image Url</source>
+			</trans-unit>
+			<trans-unit id="tx_catpics_domain_model_cat.image_url.description" resname="tx_catpics_domain_model_cat.image_url.description">
+				<source>Image U R L</source>
+			</trans-unit>
+			<trans-unit id="tx_catpics_domain_model_cat.image_width" resname="tx_catpics_domain_model_cat.image_width">
+				<source>Image Width</source>
+			</trans-unit>
+			<trans-unit id="tx_catpics_domain_model_cat.image_width.description" resname="tx_catpics_domain_model_cat.image_width.description">
+				<source>Image Width</source>
+			</trans-unit>
+			<trans-unit id="tx_catpics_domain_model_cat.image_height" resname="tx_catpics_domain_model_cat.image_height">
+				<source>Image Height</source>
+			</trans-unit>
+			<trans-unit id="tx_catpics_domain_model_cat.image_height.description" resname="tx_catpics_domain_model_cat.image_height.description">
+				<source>Image Height</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

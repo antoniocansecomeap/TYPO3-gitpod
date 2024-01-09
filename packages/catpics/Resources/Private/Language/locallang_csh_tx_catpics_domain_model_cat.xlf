@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:catpics/Resources/Private/Language/locallang_csh_tx_catpics_domain_model_cat.xlf" date="2024-01-09T11:32:32Z" product-name="catpics">
+		<header/>
+		<body>
+			<trans-unit id="cat_id.description" resname="cat_id.description">
+				<source>Internal ID of cat</source>
+			</trans-unit>
+			<trans-unit id="image_url.description" resname="image_url.description">
+				<source>Image URL</source>
+			</trans-unit>
+			<trans-unit id="image_width.description" resname="image_width.description">
+				<source>Image width</source>
+			</trans-unit>
+			<trans-unit id="image_height.description" resname="image_height.description">
+				<source>Image Height</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
