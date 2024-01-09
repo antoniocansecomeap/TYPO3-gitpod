@@ -41,5 +41,5 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks'][\Catpics\Catpics
     'extension' => 'catpics',
     'title' => 'Import cat images',
     'description' => 'Imports the cat pics in the TYPO3 database',
-    //'additionalFields' => Catpics\Catpics\Task\AdditionalFieldProvider\ImportCatPicsTaskAdditionalFieldProvider::class
+    'additionalFields' => Catpics\Catpics\Task\AdditionalFieldProvider\ImportCatPicsTaskAdditionalFieldProvider::class
 );

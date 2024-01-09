@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Catpics\Catpics\Controller;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
+use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use Catpics\Catpics\Domain\Model\Cat;
 
@@ -59,7 +61,11 @@ class CatController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function importAction(): bool
     {
-        debug('do the import');
+        //we need to do this because the dependency injections doesnt seem to work...
+        $persistenceManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(PersistenceManager::class);
+        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+        $catRepository = $objectManager->get(\Catpics\Catpics\Domain\Repository\CatRepository::class);
+
 
         $requestFactory = GeneralUtility::makeInstance(RequestFactory::class);
 
@@ -84,11 +90,19 @@ class CatController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $content = $response->getBody()->getContents();
 
         foreach(json_decode($content) as $item) {
-          $currentCat = new Cat();
-          debug($item);
+          $catItem = new Cat();
+          //@todo: load this dynamic via typoscript settings
+          $catItem->setPid(2);
+          $catItem->setCatId($item->id);
+          $catItem->setImageUrl($item->url);
+          $catItem->setImageWidth($item->width);
+          $catItem->setImageHeight($item->height);
+
+          $catRepository->add($catItem);
         }
-        return true;
-       // return (string)json_decode($content, true, flags: JSON_THROW_ON_ERROR)['fact'] ??
-       //     throw new \RuntimeException('The service returned an unexpected format.', 1666413230);
+        $persistenceManager->persistAll();
+
+      return true;
+      //@todo: exception handling
     }
 }

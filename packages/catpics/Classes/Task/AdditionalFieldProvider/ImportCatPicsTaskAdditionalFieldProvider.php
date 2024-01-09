@@ -7,7 +7,7 @@ use TYPO3\CMS\Scheduler\AbstractAdditionalFieldProvider;
 use TYPO3\CMS\Scheduler\Controller\SchedulerModuleController;
 use TYPO3\CMS\Scheduler\Task\AbstractTask;
 
-class ImportCatPicsAdditionalFieldProvider extends AbstractAdditionalFieldProvider
+class ImportCatPicsTaskAdditionalFieldProvider extends AbstractAdditionalFieldProvider
 {
 
     /**
@@ -25,8 +25,9 @@ class ImportCatPicsAdditionalFieldProvider extends AbstractAdditionalFieldProvid
         $additionalFields = [];
 
         $additionalFields = array_merge($additionalFields, $this->generateAdditionalFields("api_url", 'URL to the API', $taskInfo, is_null($task) ? "" : $task->getApiUrl()));
+        $additionalFields = array_merge($additionalFields, $this->generateAdditionalFields("api_key", 'API Key', $taskInfo, is_null($task) ? "" : $task->getApiUrl()));
         $additionalFields = array_merge($additionalFields, $this->generateAdditionalFields("image_count", 'Number of images to import', $taskInfo, is_null($task) ? "" : $task->getImageCount()));
-		    $additionalFields = array_merge($additionalFields, $this->generateAdditionalFields("breeds", 'Breeds (comma separated)', $taskInfo, is_null($task) ? "" : $task->getBreeds()));
+		    $additionalFields = array_merge($additionalFields, $this->generateAdditionalFields("breed", 'Breeds (comma separated)', $taskInfo, is_null($task) ? "" : $task->getBreed()));
 
         return $additionalFields;
     }
@@ -42,8 +43,9 @@ class ImportCatPicsAdditionalFieldProvider extends AbstractAdditionalFieldProvid
     {
 
         $submittedData['api_url'] = trim($submittedData['api_url']);
+        $submittedData['api_key'] = trim($submittedData['api_key']);
         $submittedData['image_count'] = trim($submittedData['image_count']);
-		    $submittedData['breeds'] = trim($submittedData['breeds']);
+		    $submittedData['breed'] = trim($submittedData['breed']);
 
         return true;
     }
@@ -56,9 +58,10 @@ class ImportCatPicsAdditionalFieldProvider extends AbstractAdditionalFieldProvid
      */
     public function saveAdditionalFields(array $submittedData, AbstractTask $task)
     {
-        $task->saveAdditionalFieldsetApiUrl($submittedData["api_url"]);
+        $task->setApiUrl($submittedData["api_url"]);
+        $task->setApiKey($submittedData["api_key"]);
         $task->setImageCount($submittedData["image_count"]);
-        $task->setBreeds($submittedData["breeds"]);
+        $task->setBreed($submittedData["breed"]);
     }
 
     private function generateAdditionalFields(string $fieldID, string $label, array &$taskInfo, $value = ""): array

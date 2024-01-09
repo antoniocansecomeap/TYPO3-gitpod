@@ -11,7 +11,7 @@ namespace Catpics\Catpics\Domain\Model;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- * (c) 2024 
+ * (c) 2024
  */
 
 /**
@@ -47,7 +47,7 @@ class Cat extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Image Height
      *
-     * @var string
+     * @var int
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $imageHeight = null;
@@ -118,7 +118,7 @@ class Cat extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the imageHeight
      *
-     * @return string
+     * @return int
      */
     public function getImageHeight()
     {
@@ -128,10 +128,10 @@ class Cat extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the imageHeight
      *
-     * @param string $imageHeight
+     * @param int $imageHeight
      * @return void
      */
-    public function setImageHeight(string $imageHeight)
+    public function setImageHeight(int $imageHeight)
     {
         $this->imageHeight = $imageHeight;
     }
